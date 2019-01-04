@@ -2,6 +2,7 @@ package com.google.sqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -52,11 +53,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     {
         ArrayList<Employee> allEmployess = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        db.rawQuery("SELECT * FROM "+TABLE_EMPLOYEE,null);
+        Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_EMPLOYEE,null);
+        //for looping on all emps @dB
+        while (cursor.moveToNext()){
+            Employee employee = new Employee(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getDouble(3),cursor.getString(4));
+            allEmployess.add(employee);
+        }
 
-
-
-
+        cursor.close();
+        db.close();
         
         return  allEmployess;
     }
