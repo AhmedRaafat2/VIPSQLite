@@ -10,11 +10,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class ListEmployeeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView logout;
     private ListView empList;
     private Button addEmp;
+
+    private ArrayList<Employee> employeeArrayList;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +31,10 @@ public class ListEmployeeActivity extends AppCompatActivity implements View.OnCl
         logout.setOnClickListener(this);
         addEmp.setOnClickListener(this);
 
+        DataBaseHelper helper = new DataBaseHelper(this);
+
+        employeeArrayList = new ArrayList<>();
+//        empList.s
 
 
 
