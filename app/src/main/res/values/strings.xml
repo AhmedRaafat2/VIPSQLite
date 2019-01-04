@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SQLite</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="title">Welcom to company App</string>
+    <string name="login">Login</string>
+    <string name="addemp">Add Employee</string>
+    <string name="id">id</string>
+    <string name="name">name</string>
+    <string name="address">address</string>
+    <string name="salary">salary</string>
+    <string name="job">job</string>
+    <string name="save">Save</string>
+</resources>
