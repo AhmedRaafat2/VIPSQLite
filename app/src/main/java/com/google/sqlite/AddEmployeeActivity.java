@@ -11,8 +11,10 @@ import android.widget.EditText;
 
 public class AddEmployeeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText id,name,address,salary,job;
+    private EditText id, name, address, salary, job;
     private Button save;
+    private Employee employee;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,21 +29,23 @@ public class AddEmployeeActivity extends AppCompatActivity implements View.OnCli
         save = findViewById(R.id.save);
         save.setOnClickListener(this);
         Intent intent = getIntent();
-        Employee employee = (Employee)intent.getSerializableExtra("employee");
+        employee = (Employee) intent.getSerializableExtra("employee");
 
-        id.setText(String.valueOf(employee.getId()));
-        name.setText(employee.getName());
-        address.setText(employee.getAddress());
-        salary.setText(String.valueOf(employee.getSalary()));
-        job.setText(employee.getJob());
+        if (employee != null) {
+            id.setText(String.valueOf(employee.getId()));
+            name.setText(employee.getName());
+            address.setText(employee.getAddress());
+            salary.setText(String.valueOf(employee.getSalary()));
+            job.setText(employee.getJob());
+        }
     }
 
     @Override
     public void onClick(View v) {
 
-        if(v.getId() == R.id.save){
+        if (v.getId() == R.id.save) {
 
-            if(getIntent()== null){
+            if (employee == null) {
                 Employee employee = new Employee(Integer.parseInt(id.getText().toString()),
                         name.getText().toString(),
                         address.getText().toString(),
@@ -51,9 +55,9 @@ public class AddEmployeeActivity extends AppCompatActivity implements View.OnCli
                 DataBaseHelper helper = new DataBaseHelper(this);
                 helper.addEmployee(employee);
 
-                Intent intent = new Intent(this,ListEmployeeActivity.class);
+                Intent intent = new Intent(this, ListEmployeeActivity.class);
                 startActivity(intent);
-            }else if(getIntent()!= null){
+            } else if (employee != null) {
 
                 Employee employee = new Employee(Integer.parseInt(id.getText().toString()),
                         name.getText().toString(),
@@ -64,7 +68,7 @@ public class AddEmployeeActivity extends AppCompatActivity implements View.OnCli
                 DataBaseHelper helper = new DataBaseHelper(this);
                 helper.updateEmployee(employee);
 
-                Intent intent = new Intent(this,ListEmployeeActivity.class);
+                Intent intent = new Intent(this, ListEmployeeActivity.class);
                 startActivity(intent);
 
             }
