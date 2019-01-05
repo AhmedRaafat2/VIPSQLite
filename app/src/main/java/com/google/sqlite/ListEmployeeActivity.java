@@ -19,6 +19,7 @@ public class ListEmployeeActivity extends AppCompatActivity implements View.OnCl
     private Button addEmp;
 
     private ArrayList<Employee> employeeArrayList;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +32,12 @@ public class ListEmployeeActivity extends AppCompatActivity implements View.OnCl
         logout.setOnClickListener(this);
         addEmp.setOnClickListener(this);
 
+
         DataBaseHelper helper = new DataBaseHelper(this);
+        employeeArrayList = helper.getAllEmployess();
 
-        employeeArrayList = new ArrayList<>();
-//        empList.s
-
+        EmployeeAdapter adapter = new EmployeeAdapter(this,employeeArrayList);
+        empList.setAdapter(adapter);
 
 
     }
@@ -43,16 +45,16 @@ public class ListEmployeeActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
 
-        if(v.getId() == R.id.logout){
-            SharedPreferences preferences = getSharedPreferences("myAppPref",MODE_PRIVATE);
+        if (v.getId() == R.id.logout) {
+            SharedPreferences preferences = getSharedPreferences("myAppPref", MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
             editor.clear();
             editor.apply();
-            Intent intent = new Intent(this,MainActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
-        }else if(v.getId() == R.id.add_employee){
-            Intent intent = new Intent(this,AddEmployeeActivity.class);
+        } else if (v.getId() == R.id.add_employee) {
+            Intent intent = new Intent(this, AddEmployeeActivity.class);
             startActivity(intent);
         }
 
