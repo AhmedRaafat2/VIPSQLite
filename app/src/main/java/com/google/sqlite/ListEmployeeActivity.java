@@ -5,14 +5,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class ListEmployeeActivity extends AppCompatActivity implements View.OnClickListener {
+public class ListEmployeeActivity extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemClickListener {
 
     private ImageView logout;
     private ListView empList;
@@ -27,6 +29,7 @@ public class ListEmployeeActivity extends AppCompatActivity implements View.OnCl
 
         logout = findViewById(R.id.logout);
         empList = findViewById(R.id.emp_list);
+        empList.setOnItemClickListener(this);
         addEmp = findViewById(R.id.add_employee);
 
         logout.setOnClickListener(this);
@@ -72,5 +75,14 @@ public class ListEmployeeActivity extends AppCompatActivity implements View.OnCl
         EmployeeAdapter adapter = new EmployeeAdapter(this,employeeArrayList);
         empList.setAdapter(adapter);
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Intent intent = new Intent(this,EmployeeUpdateActivity.class);
+        Employee employee = employeeArrayList.get(position);
+        intent.putExtra("employee",employee);
+        startActivity(intent);
     }
 }

@@ -2,6 +2,7 @@ package com.google.sqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -92,5 +93,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return  allEmployess;
+    }
+
+    public void updateEmployee(Employee employee){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_ID,employee.getId());
+        values.put(KEY_NAME,employee.getName());
+        values.put(KEY_ADDRESS,employee.getAddress());
+        values.put(KEY_SALARY,employee.getSalary());
+        values.put(KEY_JOB,employee.getJob());
+
+        db.update(TABLE_EMPLOYEE,values,KEY_ID+"=?",new String[]{String.valueOf(employee.getId())});
+        db.close();
+
+    }
+
+    public void deleteEmployee(int id){
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TABLE_EMPLOYEE,KEY_ID+"=?",new String[]{String.valueOf(id)});
+
     }
 }

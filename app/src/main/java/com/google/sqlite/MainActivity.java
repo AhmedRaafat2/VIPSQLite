@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(this,ListEmployeeActivity.class);
             startActivity(intent);
             finish();
-
         }
     }
 
@@ -51,7 +50,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 SharedPreferences preferences = getSharedPreferences("myAppPref",MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putBoolean("isLogged",true);
-                editor.commit();
+//                editor.commit();
+                editor.apply();
                 startActivity(intent);
                 finish();
             }else{

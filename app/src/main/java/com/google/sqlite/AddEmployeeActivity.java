@@ -1,5 +1,6 @@
 package com.google.sqlite;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,24 +26,48 @@ public class AddEmployeeActivity extends AppCompatActivity implements View.OnCli
 
         save = findViewById(R.id.save);
         save.setOnClickListener(this);
+        Intent intent = getIntent();
+        Employee employee = (Employee)intent.getSerializableExtra("employee");
+
+        id.setText(String.valueOf(employee.getId()));
+        name.setText(employee.getName());
+        address.setText(employee.getAddress());
+        salary.setText(String.valueOf(employee.getSalary()));
+        job.setText(employee.getJob());
     }
 
     @Override
     public void onClick(View v) {
 
         if(v.getId() == R.id.save){
-            Employee employee = new Employee(Integer.parseInt(id.getText().toString()),
-                    name.getText().toString(),
-                    address.getText().toString(),
-                    Double.parseDouble(salary.getText().toString()),
-                    job.getText().toString());
 
-            DataBaseHelper helper = new DataBaseHelper(this);
-            helper.addEmployee(employee);
+            if(getIntent()== null){
+                Employee employee = new Employee(Integer.parseInt(id.getText().toString()),
+                        name.getText().toString(),
+                        address.getText().toString(),
+                        Double.parseDouble(salary.getText().toString()),
+                        job.getText().toString());
 
-            Intent intent = new Intent(this,ListEmployeeActivity.class);
-            startActivity(intent);
+                DataBaseHelper helper = new DataBaseHelper(this);
+                helper.addEmployee(employee);
 
+                Intent intent = new Intent(this,ListEmployeeActivity.class);
+                startActivity(intent);
+            }else if(getIntent()!= null){
+
+                Employee employee = new Employee(Integer.parseInt(id.getText().toString()),
+                        name.getText().toString(),
+                        address.getText().toString(),
+                        Double.parseDouble(salary.getText().toString()),
+                        job.getText().toString());
+
+                DataBaseHelper helper = new DataBaseHelper(this);
+                helper.updateEmployee(employee);
+
+                Intent intent = new Intent(this,ListEmployeeActivity.class);
+                startActivity(intent);
+
+            }
 
         }
 

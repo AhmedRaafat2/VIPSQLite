@@ -11,4 +11,6 @@
     <string name="salary">salary</string>
     <string name="job">job</string>
     <string name="save">Save</string>
+    <string name="update">update</string>
+    <string name="delete">delete</string>
 </resources>
