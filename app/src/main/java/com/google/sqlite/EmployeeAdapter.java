@@ -39,10 +39,10 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
         salary = view.findViewById(R.id.salary_preview);
         job = view.findViewById(R.id.job_preview);
 
-        //id.setText(employees.get(position).getId());
+        id.setText(String.valueOf(employees.get(position).getId()));
         name.setText(employees.get(position).getName());
         address.setText(employees.get(position).getAddress());
-        //salary.setText((int)employees.get(position).getSalary());
+        salary.setText(String.valueOf(employees.get(position).getSalary()));
         job.setText(employees.get(position).getJob());
 
         return view;

@@ -39,7 +39,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_ID,employee.getId());
+        //values.put(KEY_ID,employee.getId());
         values.put(KEY_NAME,employee.getName());
         values.put(KEY_ADDRESS,employee.getAddress());
         values.put(KEY_SALARY,employee.getSalary());

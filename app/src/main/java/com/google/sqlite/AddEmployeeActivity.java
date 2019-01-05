@@ -1,5 +1,6 @@
 package com.google.sqlite;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +39,9 @@ public class AddEmployeeActivity extends AppCompatActivity implements View.OnCli
 
             DataBaseHelper helper = new DataBaseHelper(this);
             helper.addEmployee(employee);
+
+            Intent intent = new Intent(this,ListEmployeeActivity.class);
+            startActivity(intent);
 
 
         }

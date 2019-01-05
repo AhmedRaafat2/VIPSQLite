@@ -33,11 +33,11 @@ public class ListEmployeeActivity extends AppCompatActivity implements View.OnCl
         addEmp.setOnClickListener(this);
 
 
-        DataBaseHelper helper = new DataBaseHelper(this);
-        employeeArrayList = helper.getAllEmployess();
-
-        EmployeeAdapter adapter = new EmployeeAdapter(this,employeeArrayList);
-        empList.setAdapter(adapter);
+//        DataBaseHelper helper = new DataBaseHelper(this);
+//        employeeArrayList = helper.getAllEmployess();
+//
+//        EmployeeAdapter adapter = new EmployeeAdapter(this,employeeArrayList);
+//        empList.setAdapter(adapter);
 
 
     }
@@ -57,6 +57,18 @@ public class ListEmployeeActivity extends AppCompatActivity implements View.OnCl
             Intent intent = new Intent(this, AddEmployeeActivity.class);
             startActivity(intent);
         }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        DataBaseHelper helper = new DataBaseHelper(this);
+        employeeArrayList = helper.getAllEmployess();
+
+        EmployeeAdapter adapter = new EmployeeAdapter(this,employeeArrayList);
+        empList.setAdapter(adapter);
 
     }
 }
