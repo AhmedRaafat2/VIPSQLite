@@ -32,7 +32,9 @@ public class ListEmployeeActivity extends AppCompatActivity implements View.OnCl
         logout.setOnClickListener(this);
         addEmp.setOnClickListener(this);
 
-
+//شيلنا الكود ده من هنا وحطيناه جوا الاون ريزيوم علشان كده كده انا ضامن
+// انه حينده عليها فى كل مرة حفتح فيها الاكتيفيتى دى سواء
+// لاول مرة البنامج يشتغل او كنت جاى للاكتيفتى من اكتيفتى تانية
 //        DataBaseHelper helper = new DataBaseHelper(this);
 //        employeeArrayList = helper.getAllEmployess();
 //

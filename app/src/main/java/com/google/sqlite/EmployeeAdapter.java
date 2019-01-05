@@ -39,6 +39,9 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
         salary = view.findViewById(R.id.salary_preview);
         job = view.findViewById(R.id.job_preview);
 
+        //هنا استخدمنا ميثود من جوا كلاس استرنج
+        //اسمها فاليو اوف علشان احول من القيمة الانتجر او اى قيمة
+        //الى قيمة استرنج
         id.setText(String.valueOf(employees.get(position).getId()));
         name.setText(employees.get(position).getName());
         address.setText(employees.get(position).getAddress());

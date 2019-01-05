@@ -35,6 +35,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    //هنا انا عملت ميثود بتاخد اوبجيكت من Employee
+    //بعد ما هى اخدت الاوبجت
+    //عملنا db = getWritableDatabase
+    //ده وظيفته يدينى قلم اكتب بيه جوا الداتا بيز
+    //بس حيكون فاضل الكونتينر اللى اكتب جواه
+    //وعلشان كده عملنا
+    //ContentValues values = new ContentValues();
+    //وده كده كونتينر اعبيه بالداتا
+    //اديله اسم الكولم والفايليو اللى انا جايبها من الاوبجيكت Employee اللى انا مديهوله اصلا
+    //بعد ما عبينا الداتا جوا الكونتينر
+    //حددى الكونتينر للقلم
+    // db.insert(TABLE_EMPLOYEE,null,values);
+    //ثم ضرورى اقفل الاتصال مع الداتا بيز بعد ما خلصت
+    // db.close();
     public void addEmployee(Employee employee){
 
         SQLiteDatabase db = getWritableDatabase();
@@ -48,6 +62,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
 
     }
+
+
+    //هنا دى ميثود وظيفتها تفتح اتصال مع الداتا بيز
+    //وتروح تجيبلى كل Employees اللى موجودة جوا الداتا بيز
+    //بس السؤال هنا حعبيهم فى ايه؟؟؟؟
+    //ArrayList<Employee> allEmployess = new ArrayList<>();
+    //حعمل اوبجت يمكننى انى اقرأ من الداتا بيز
+    //SQLiteDatabase db = getReadableDatabase();
+    //ولازم اعمل اوبجت من كيرسور اللى بمثابة المؤشر
+    //Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_EMPLOYEE,null);
+    //وكمان حضطر اعمل loop علشان اقدر الف جوا الداتا بيز واعبى Employee Array بالداتا
+    //وبعد ما نلف جوا ونخلص لازم نقفل الكيرسور والاتصال مع الداتابيز
+    // ومتنساش تبعت الليسته فى الاخر
+    //return  allEmployess;
 
     public ArrayList<Employee> getAllEmployess()
     {
